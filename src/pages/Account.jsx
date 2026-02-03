@@ -5,36 +5,38 @@ export default function Account() {
   const u = JSON.parse(localStorage.getItem("user") || "{}");
 
   const logout = () => {
-    localStorage.setItem("isLoggedIn", "false"); // only session off
-    nav("/"); // welcome page
+    localStorage.setItem("isLoggedIn", "false");
+    nav("/");
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-3 sm:px-4">
-      <div className="w-full max-w-[360px] sm:max-w-[400px] bg-white rounded-xl shadow-lg p-5 sm:p-6">
+    <div className="min-h-screen bg-slate-900 sm:flex sm:items-center sm:justify-center sm:p-4">
+      <div className="bg-white min-h-screen sm:min-h-0 w-full sm:max-w-2xl p-6 sm:p-8 sm:rounded-xl sm:shadow-lg">
 
-        <h2 className="text-base sm:text-lg font-bold text-center mb-5 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-center sm:text-left mb-6">
           Account Settings
         </h2>
 
-        <div className="flex flex-col items-center">
+        {/* Profile */}
+        <div className="flex flex-col items-center mb-6">
 
           <img
             src={u.image || "https://via.placeholder.com/100"}
             alt="Profile"
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-violet-500"
+            className="w-24 h-24 rounded-full object-cover border-4 border-violet-500"
           />
 
-          <h3 className="mt-3 font-semibold text-base sm:text-lg">
-            {u.name}
+          <h3 className="mt-3 font-semibold text-lg text-center">
+            {u.name || "User"}
           </h3>
 
-          <p className="text-xs sm:text-sm text-gray-500">
+          <p className="text-sm text-gray-500 break-all text-center">
             {u.email}
           </p>
         </div>
 
-        <div className="mt-5 sm:mt-6 space-y-3 text-xs sm:text-sm">
+        {/* Info */}
+        <div className="space-y-4 text-base">
 
           <div className="flex justify-between border-b pb-2">
             <span className="text-gray-500">Phone</span>
@@ -51,7 +53,7 @@ export default function Account() {
         {/* Logout */}
         <button
           onClick={logout}
-          className="mt-6 sm:mt-8 w-full py-2.5 sm:py-3 rounded-lg border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition text-sm sm:text-base"
+          className="mt-10 w-full py-3 rounded-lg border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition text-base"
         >
           Log Out
         </button>

@@ -45,10 +45,7 @@ export default function Signup() {
     else if (!/\S+@\S+\.\S+/.test(form.email))
       err.email = "Invalid email";
 
-    if (!form.password) err.password = "Password required";
-    else if (form.password.length < 6)
-      err.password = "Minimum 6 characters";
-
+    if (!form.password) err.password = "Minimum 6 characters";
     if (!form.company) err.company = "Company required";
 
     setErrors(err);
@@ -60,54 +57,63 @@ export default function Signup() {
 
     localStorage.setItem("user", JSON.stringify(form));
     localStorage.setItem("isLoggedIn", "true");
-
     nav("/account");
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-slate-900 px-3 sm:px-4">
-      <div className="w-full max-w-[360px] sm:max-w-[400px] bg-white p-5 sm:p-6 rounded-xl shadow-lg">
+    <div className="min-h-screen bg-slate-900 sm:flex sm:items-center sm:justify-center sm:p-4">
+      <div className="bg-white min-h-screen sm:min-h-0 w-full sm:max-w-2xl p-6 sm:p-8 sm:rounded-xl sm:shadow-lg">
 
-        <h2 className="text-lg sm:text-xl font-bold mb-4">
+        <h2 className="text-2xl font-bold mb-6">
           Create your PopX account
         </h2>
 
         {/* Image Upload */}
-        <label className="block mb-2 cursor-pointer">
-          <span className="text-xs sm:text-sm text-gray-600">
-            Add profile pic
+        <label className="block mb-5 cursor-pointer">
+          <span className="text-sm text-gray-600">
+            Profile picture
           </span>
 
           <input type="file" accept="image/*" hidden onChange={handleImage} />
 
-          <div className="mt-2 border border-dashed rounded p-3 text-center text-xs sm:text-sm text-gray-500">
-            Click to upload
+          <div className="mt-2 border border-dashed rounded p-3 text-center text-sm text-gray-500">
+            Tap to upload
           </div>
 
           {errors.image && (
-            <p className="text-red-500 text-xs">{errors.image}</p>
+            <p className="text-red-500 text-xs mt-1">
+              {errors.image}
+            </p>
           )}
         </label>
 
         {form.image && (
           <img
             src={form.image}
-            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto mb-3 object-cover"
+            className="w-20 h-20 rounded-full mb-6 object-cover"
           />
         )}
 
         {["name", "phone", "email", "password", "company"].map((k) => (
-          <div key={k}>
+          <div key={k} className="mb-4">
             <input
               name={k}
-              type={k === "password" ? "password" : "text"}
+              type={
+                k === "password"
+                  ? "password"
+                  : k === "email"
+                  ? "email"
+                  : k === "phone"
+                  ? "tel"
+                  : "text"
+              }
               onChange={handle}
-              placeholder={k}
-              className="border w-full p-2.5 sm:p-3 mb-1 rounded text-sm sm:text-base"
+              placeholder={k.charAt(0).toUpperCase() + k.slice(1)}
+              className="border w-full p-3 rounded text-base outline-none focus:ring-2 focus:ring-violet-500"
             />
 
             {errors[k] && (
-              <p className="text-red-500 text-xs mb-2">
+              <p className="text-red-500 text-xs mt-1">
                 {errors[k]}
               </p>
             )}
@@ -116,7 +122,7 @@ export default function Signup() {
 
         <button
           onClick={submit}
-          className="bg-violet-600 hover:bg-violet-700 transition text-white w-full py-2.5 sm:py-3 rounded-lg mt-2 text-sm sm:text-base"
+          className="bg-violet-600 hover:bg-violet-700 transition text-white w-full py-3 rounded-lg mt-4 text-base"
         >
           Create Account
         </button>
