@@ -4,27 +4,27 @@ export default function Welcome() {
   const nav = useNavigate();
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-3">
-      <div className="w-full max-w-md sm:max-w-2xl bg-white p-6 sm:p-10 rounded-xl shadow-xl flex flex-col justify-center">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+      <div className="w-full max-w-md sm:max-w-5xl bg-white p-8 sm:p-12 rounded-xl shadow-xl flex flex-col justify-center">
 
-        <h1 className="text-2xl sm:text-3xl font-bold mb-3">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4">
           Welcome to PopX
         </h1>
 
-        <p className="text-gray-500 mb-6 text-base sm:text-lg">
+        <p className="text-gray-500 mb-8 text-lg sm:text-xl">
           Create an account or login to continue
         </p>
 
         <button
           onClick={() => nav("/signup")}
-          className="bg-violet-600 hover:bg-violet-700 transition text-white w-full py-3 rounded-lg text-base sm:text-lg mb-3"
+          className="bg-violet-600 hover:bg-violet-700 transition text-white w-full py-5 rounded-lg text-xl mb-4"
         >
           Create Account
         </button>
 
         <button
           onClick={() => nav("/login")}
-          className="bg-violet-200 hover:bg-violet-300 transition w-full py-3 rounded-lg text-base sm:text-lg"
+          className="bg-violet-200 hover:bg-violet-300 transition w-full py-5 rounded-lg text-xl"
         >
           Already Registered? Login
         </button>

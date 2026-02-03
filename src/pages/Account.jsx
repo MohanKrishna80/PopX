@@ -11,34 +11,34 @@ export default function Account() {
 
   return (
     <div className="min-h-screen bg-slate-900 sm:flex sm:items-center sm:justify-center sm:p-4">
-      <div className="bg-white min-h-screen sm:min-h-0 w-full sm:max-w-2xl p-6 sm:p-8 sm:rounded-xl sm:shadow-lg">
+      <div className="bg-white min-h-screen sm:min-h-0 w-full sm:max-w-4xl p-6 sm:p-10 sm:rounded-xl sm:shadow-lg">
 
-        <h2 className="text-xl sm:text-2xl font-bold text-center sm:text-left mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center sm:text-left mb-8">
           Account Settings
         </h2>
 
         {/* Profile */}
-        <div className="flex flex-col items-center mb-6">
+        <div className="flex flex-col items-center mb-8">
 
           <img
             src={u.image || "https://via.placeholder.com/100"}
             alt="Profile"
-            className="w-24 h-24 rounded-full object-cover border-4 border-violet-500"
+            className="w-28 h-28 rounded-full object-cover border-4 border-violet-500"
           />
 
-          <h3 className="mt-3 font-semibold text-lg text-center">
+          <h3 className="mt-4 font-semibold text-xl sm:text-2xl text-center">
             {u.name || "User"}
           </h3>
 
-          <p className="text-sm text-gray-500 break-all text-center">
+          <p className="text-base sm:text-lg text-gray-500 break-all text-center">
             {u.email}
           </p>
         </div>
 
         {/* Info */}
-        <div className="space-y-4 text-base">
+        <div className="space-y-6 text-lg">
 
-          <div className="flex justify-between border-b pb-2">
+          <div className="flex justify-between border-b pb-3">
             <span className="text-gray-500">Phone</span>
             <span className="font-medium">{u.phone}</span>
           </div>
@@ -53,7 +53,7 @@ export default function Account() {
         {/* Logout */}
         <button
           onClick={logout}
-          className="mt-10 w-full py-3 rounded-lg border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition text-base"
+          className="mt-12 w-full py-4 rounded-lg border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition text-lg"
         >
           Log Out
         </button>
